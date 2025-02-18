@@ -128,25 +128,42 @@ deleteNode(root,value){
         }
         root.value = this.min(root.right);
         root.right = this.deleteNode(root.right,root.value);
+      }
+      return root;
     }
-    return root;
-}
+    findParent(root, target) {
+      if (!root || root.value === target) return null;
+      let parent = null;
+      
+      function parentHelper(node) {
+          if (node === null || parent !== null) return;
+    
+          if (node.left && node.left.value === target) {
+              parent = node;
+              return;
+          }
+          if (node.right && node.right.value === target) {
+              parent = node;
+              return;
+          }
+    
+          parentHelper(node.left);
+          parentHelper(node.right);
+      }
+    
+      parentHelper(root)
+      return parent
+    }
 }
 
 const bst = new BinarySearchTree();
-console.log(bst.isEmpty());
-bst.insert(10)
-bst.insert(5)
-bst.insert(15)
-bst.insert(3)
-bst.insert(7)
-bst.preOrder(bst.root)
-console.log('-------------------------------');
-bst.inOrder(bst.root)
-console.log('-------------------------------');
-bst.postOrder(bst.root)
-console.log('-------------------------------');
-bst.levelOrder(bst.root)
-console.log('-------------------------------');
-console.log(bst.min(bst.root));
-console.log(bst.max(bst.root))
+bst.insert(10);
+bst.insert(5);
+bst.insert(15);
+bst.insert(3);
+bst.insert(7);
+
+bst.levelOrder();
+
+const parentNode = bst.findParent(bst.root, 15);
+console.log(parentNode ? parentNode.value : "Parent not found")
