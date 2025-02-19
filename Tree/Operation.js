@@ -7,13 +7,13 @@
 //     return results;
 // }
 
-// isBST(root,min=null,max=null){
-//     if(!root) return true;
-//     if((min!==null && root.value <= min) || (max!==null && root.value >= max)){
-//         return false;
-//     }
-//     return this.isBST(root.left,min,root.value) && this.isBST(root.right,root.value,max);
-// }
+isBST(root,min=null,max=null){
+    if(!root) return true;
+    if((min!==null && root.value <= min) || (max!==null && root.value >= max)){
+        return false;
+    }
+    return this.isBST(root.left,min,root.value) && this.isBST(root.right,root.value,max);
+}
 
 // findHeight(root){
 //     if(!root) return 0;
