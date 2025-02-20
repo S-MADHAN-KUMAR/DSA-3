@@ -1,11 +1,11 @@
-// findPrimes(root,results = []){
-//     if(root){
-//         this.findPrimes(root.left,results);
-//         if(this.isPrime(root.value)) results.push(root.value);
-//         this.findPrimes(root.right,results);
-//     }
-//     return results;
-// }
+findPrimes(root,results = []){
+    if(root){
+        this.findPrimes(root.left,results);
+        if(this.isPrime(root.value)) results.push(root.value);
+        this.findPrimes(root.right,results);
+    }
+    return results;
+}
 
 isBST(root,min=null,max=null){
     if(!root) return true;
