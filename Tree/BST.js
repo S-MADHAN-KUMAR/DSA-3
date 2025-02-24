@@ -180,7 +180,29 @@ findKthSmallestElement(root,k){
     ReverdeOrder(root)
     return result
 }
+findParent(root, target) {
+    if (!root || root.value === target) return null;
+    let parent = null;
+    
+    function parentHelper(node) {
+        if (node === null || parent !== null) return;
 
+        if (node.left && node.left.value === target) {
+            parent = node;
+            return;
+        }
+        if (node.right && node.right.value === target) {
+            parent = node;
+            return;
+        }
+
+        parentHelper(node.left);
+        parentHelper(node.right);
+    }
+
+    parentHelper(root);
+    return parent.value
+}
 }
 
 // Example Usage
@@ -201,4 +223,6 @@ bts.preOrder(bts.root);
 console.log('---------------------------------');
 
 console.log(bts.findKthSmallestElement(bts.root,4));
+console.log(bts.findParent(bts.root,1000));
+
 

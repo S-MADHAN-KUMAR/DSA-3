@@ -21,7 +21,7 @@
 // find longest substrign with repeating characters
 // find all palindromes in a string
 
-countWords(){
+function countWords(){
 
     const recursiveCountWords = (node) =>{
         let count = 0;
@@ -36,7 +36,7 @@ countWords(){
     return recursiveCountWords(this.root);
 }
 
-longestPrefix(word){
+function longestPrefix(word){
     let node = this.root;
     let longestPrefix = '';
 
@@ -54,7 +54,7 @@ longestPrefix(word){
 }
 
 
-countPrefixes(word) {
+function countPrefixes(word) {
     let node = this.root;
     let count = 0;
 

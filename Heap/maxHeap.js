@@ -6,7 +6,7 @@ class Heap{
     swap(index1,index2){
         let temp = this.heap[index1];
         this.heap[index1] = this.heap[index2];
-        this.heap[index2] = temp;
+        this.heap[index2] = temp
     }
 
     hasLeftChild(index){

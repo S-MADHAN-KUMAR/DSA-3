@@ -35,6 +35,37 @@ class Heap {
     peek() {
         return this.heap.length === 0 ? null : this.heap[0];
     }
+    hasLeftChild(index){
+        return this.getLeftChildIndex(index) < this.heap.length;
+    }
+
+    hasRightChild(index){
+        return this.getRightChildIndex(index) < this.heap.length;
+    }
+
+    hasParent(index){
+        return this.getParentIndex(index) >= 0;
+    }
+
+    getLeftChildIndex(index){
+        return 2 * index + 1;
+    }
+
+    getRightChildIndex(index){
+        return 2 * index + 2;
+    }
+
+    getParentIndex(index){
+        return Math.floor((index-1)/2);
+    }
+
+    getLeftChild(index){
+        return this.heap[this.getLeftChildIndex(index)];
+    }
+
+    getRightChild(index){
+        return this.heap[this.getRightChildIndex(index)];
+    }
 
     remove(){
         if(this.heap.length===0) return null;
@@ -44,6 +75,25 @@ class Heap {
         this.heapifyDown();
         return item;
     }
+
+    heapifyDown(){
+        let index = 0;
+        while(this.hasLeftChild(index)){
+            let smallerIndex = this.getLeftChildIndex(index);
+            if(this.hasRightChild(index) && this.getRightChild(index) < this.getLeftChild(index)){
+                smallerIndex = this.getRightChildIndex(index)
+            }
+            if(this.heap[index] < this.heap[smallerIndex]){
+                break;
+            }
+            else{
+                this.swap(index,smallerIndex);
+            }
+            index = smallerIndex;
+        }
+    }   
+
+
 
     printTree() {
         let level = 0;
@@ -65,9 +115,10 @@ heap.addElement(14);
 heap.addElement(13);
 heap.addElement(12);
 heap.addElement(1);
+// heap.remove(1);
+heap.remove();
+heap.remove();
 
-console.log("Peek:", heap.peek());
-console.log("Heap Tree:");
 heap.printTree();
 
 

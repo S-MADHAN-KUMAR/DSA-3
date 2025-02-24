@@ -38,6 +38,7 @@ class Graph {
     this.adjacencyList[vertex2].delete(vertex1);
   }
 
+
   removeVertex(vertex) {
     if (!this.adjacencyList[vertex]) {
       return;
@@ -123,6 +124,7 @@ graph.addVertex("C");
 graph.addEdge("A", "B");
 graph.addEdge("B", "C");
 graph.addEdge("C", "A");
-// graph.display()
+graph.removeVertex("A")
+graph.display()
 graph.bfs("C");
 // graph.display()

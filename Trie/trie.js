@@ -20,37 +20,36 @@ class Trie{
         }
         node.isEndOfWord = true;
     }
-
+                                                                                                                                                                                                        
     search(word){
         let node = this.root;
         for(const char of word){
             if(!node.children[char]) return false;
             node = node.children[char];
         }
-        return node.isEndOfWord;
+        return node.isEndOfWord
     }
 
     delete(word){
-
         const deleteRecursive = (node,word,index)=>{
             if(index === word.length){
-                if(!node.isEndOfWord) return false;
-                node.isEndOfWord = false;
-                return Object.keys(node.children).length === 0;
+                if(!node.isEndOfWord) return false
+                node.isEndOfWord = false
+                return Object.keys(node.children).length === 0
             }
 
-            const char = word[index];
-            const childNode = node.children[char];
-            if(!childNode) return false;
+            const char = word[index]
+            const childNode = node.children[char]
+            if(!childNode) return false
 
-            const shouldDeleteChild = deleteRecursive(childNode,word,index+1);
+            const shouldDeleteChild = deleteRecursive(childNode,word,index+1)
 
             if(shouldDeleteChild){
-                delete node.children[char];
-                return Object.keys(node.children).length===0 && !node.isEndOfWord;
+                delete node.children[char]
+                return Object.keys(node.children).length===0 && !node.isEndOfWord
             }
 
-            return false;
+            return false
         }
 
         deleteRecursive(this.root,word,0);
@@ -101,13 +100,13 @@ trie.insert("banana");
 trie.insert("bat");
 trie.insert("batman");
 
-console.log(trie.search("apple"));  // true
-console.log(trie.search("app"));    // true
-console.log(trie.search("batman"));// true
-console.log(trie.search("ban"));   // false
+console.log(trie.search("apple"));  
+console.log(trie.search("app"));  
+console.log(trie.search("batman"))
+console.log(trie.search("ban"))
 
 trie.delete("app");
-console.log(trie.search("app"));    // false
-console.log(trie.startsWith("ba")); // true
+console.log(trie.search("app"))
+console.log(trie.startsWith("ba"))
 
-console.log(trie.autocomplete("ba")); // ["banana", "bat", "batman"]
+console.log(trie.autocomplete("ba"))
