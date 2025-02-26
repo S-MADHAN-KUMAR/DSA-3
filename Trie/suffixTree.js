@@ -28,6 +28,7 @@ class SuffixTrie {
         }
         node.isEndOfSuffix = true;
     }
+    
 
     search(substring) {
         let node = this.root;

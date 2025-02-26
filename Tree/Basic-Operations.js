@@ -90,7 +90,8 @@ findSibling(root, target) {
         return parent.right ? parent.right.value : null; 
     }
     if (parent.right && parent.right.value === target) {
-        return parent.left ? parent.left.value : null; 
+        return parent.left ? parent.left.value
+        : null; 
     }
 
     return null;
