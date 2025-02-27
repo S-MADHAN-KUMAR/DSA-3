@@ -6,7 +6,7 @@ class Node {
   }
 }
  
-class BTS {
+class BTS { 
   constructor() {
       this.root = null;
   }
